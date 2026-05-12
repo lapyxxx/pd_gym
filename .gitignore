@@ -1,13 +1,14 @@
+.DS_Store
 node_modules/
 dist/
 .env
 data/
 uploads/
-thread-workspaces/
 memories/
+thread-workspaces/
 local-codex-export.json
+projects.json
 *.db
 *.db-*
 *.db-shm
 *.db-wal
-projects.json
