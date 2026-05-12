@@ -795,10 +795,6 @@ app.post("/telegram/webhook", async (request) => {
   return { ok: true };
 });
 
-app.get("/konditer", async (_request, reply) => {
-  return reply.redirect("/konditer/");
-});
-
 app.get("/gym", async (_request, reply) => {
   return reply.redirect("/gym/");
 });
