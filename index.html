@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Codex Remote</title>
+    <link rel="stylesheet" href="/styles.css?v=20260402-8" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button id="chat-back" class="back-button" type="button" aria-label="Open chats">
+          <span class="back-arrow">←</span>
+        </button>
+        <div class="topbar-copy">
+          <div id="topbar-eyebrow" class="eyebrow">Текущий чат</div>
+          <h1 id="project-title">Чаты</h1>
+        </div>
+        <button id="menu-button" class="icon-button topbar-menu hidden" type="button" aria-label="Open settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="5" cy="12" r="1.7"></circle>
+            <circle cx="12" cy="12" r="1.7"></circle>
+            <circle cx="19" cy="12" r="1.7"></circle>
+          </svg>
+        </button>
+      </header>
+
+      <aside id="project-drawer" class="project-drawer hidden">
+        <div class="drawer-card">
+          <div class="drawer-header">
+            <div class="drawer-title">Мои чаты</div>
+            <button id="sync-now-button" class="drawer-action" type="button">Sync</button>
+          </div>
+          <div id="projects-list" class="project-list"></div>
+        </div>
+      </aside>
+
+      <section id="chat-banner" class="chat-banner hidden"></section>
+
+      <main id="messages" class="messages"></main>
+
+      <form id="composer" class="composer">
+        <div id="attachments-preview" class="attachments-preview"></div>
+        <div class="composer-row">
+          <input id="file-input" class="hidden" type="file" multiple />
+          <button id="attach-button" class="icon-button composer-icon" type="button" aria-label="Attach files">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16.5 6.5 9.2 13.8a3.3 3.3 0 1 0 4.7 4.7l7.1-7.1a5.3 5.3 0 0 0-7.5-7.5L5.8 11.6a7.3 7.3 0 1 0 10.3 10.3l5.2-5.2"></path>
+            </svg>
+          </button>
+          <textarea id="message-input" class="message-input" rows="1" placeholder="Сообщение"></textarea>
+          <button id="send-button" class="send-button" type="submit" aria-label="Send message">
+            <span class="send-spinner spinner hidden" aria-hidden="true"></span>
+            <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 3.8 3.9 11.1c-.8.3-.8 1.4 0 1.7l6.6 2.3 2.3 6.6c.3.8 1.4.8 1.7 0l7.3-17.7c.3-.8-.5-1.6-1.2-1.2Z"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="settings-sheet" class="sheet-backdrop hidden">
+      <div id="settings-panel" class="bottom-sheet" role="dialog" aria-modal="true" aria-label="Run settings">
+        <div class="sheet-handle"></div>
+        <div class="sheet-header">
+          <div class="sheet-title">Параметры запуска</div>
+        </div>
+        <div class="controls-panel">
+          <label>
+            <span>Model</span>
+            <select id="model-select"></select>
+          </label>
+          <label>
+            <span>Power</span>
+            <select id="power-select"></select>
+          </label>
+          <label>
+            <span>Preset</span>
+            <select id="mode-select">
+              <option value="chat">chat</option>
+              <option value="analyze">analyze</option>
+              <option value="change">change</option>
+              <option value="review">review</option>
+              <option value="deploy">deploy</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div id="preview-modal" class="preview-modal hidden">
+      <div class="preview-shell">
+        <button id="preview-close" class="icon-button compact preview-close" type="button">Close</button>
+        <img id="preview-image" class="preview-image hidden" alt="Attachment preview" />
+        <div id="preview-file" class="preview-file hidden"></div>
+      </div>
+    </div>
+
+    <template id="message-template">
+      <article class="message">
+        <div class="bubble">
+          <div class="meta"></div>
+          <div class="content"></div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js?v=20260402-8"></script>
+  </body>
+</html>
